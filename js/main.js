@@ -23,7 +23,7 @@ function downloadICS(ev){
     `UID:${ev.date}-${ev.title.replace(/\W/g,'')}@wedding-invite`,
     `DTSTAMP:${new Date().toISOString().replace(/[-:]|\.\d{3}/g,'')}`,
     `DTSTART;TZID=Asia/Kolkata:${f(ev.date,ev.start)}`,`DTEND;TZID=Asia/Kolkata:${f(ev.date,ev.end)}`,
-    `SUMMARY:${ev.title} \u2013 Sai Kiran & Meghana`,`LOCATION:${ev.venue}`,'END:VEVENT','END:VCALENDAR'].join('\r\n');
+    `SUMMARY:${ev.title} \u2013 Atmanand & Pooja`,`LOCATION:${ev.venue}`,'END:VEVENT','END:VCALENDAR'].join('\r\n');
   const a=document.createElement('a');
   a.href=URL.createObjectURL(new Blob([ics],{type:'text/calendar'}));
   a.download=ev.title.replace(/\W+/g,'-').toLowerCase()+'.ics';
@@ -71,8 +71,8 @@ function setupVenue(){
     toast('Address copied to clipboard');
   };
   const w=t=>`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(t)}`;
-  $('#rsvpBtn').href=w('Namaskaram! We will be attending the wedding of Sai Kiran & Meghana.');
-  $('#wishBtn').href=w('Heartfelt wishes to Sai Kiran & Meghana on their wedding!');
+  $('#rsvpBtn').href=w('Namaskaram! We will be attending the wedding of Atmanand & Pooja.');
+  $('#wishBtn').href=w('Heartfelt wishes to Atmanand & Pooja on their wedding!');
 }
 
 function setupReveal(){
