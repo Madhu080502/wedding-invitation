@@ -1,19 +1,14 @@
 /* ===== EDIT YOUR DETAILS HERE ===== */
 const CONFIG={
-  marriageDateTime:'2026-12-11T10:42:00+05:30',
-  venue:{name:'Sri Venkateswara Kalyana Mantapam',address:'Station Road, Hospet, Karnataka 583201',
-    map:'https://maps.google.com/?q=Hospet+Kalyana+Mantapam'},
-  whatsapp:'919999999999',
+  marriageDateTime:'2026-12-05T12:13:00+05:30',
+  venue:{name:'KBN Sai Aranya Wedding Hall',address:'Narendra Cross, Dharwad Karnataka 583201',
+    map:'https://maps.app.goo.gl/ZaetH4Ut3VHd1wor5'},
+  whatsapp:'919632043415',
   events:[
-    {day:'Day 1',title:'Haldi',date:'2026-12-09',start:'10:00',end:'13:00',dress:'Yellow & Traditional',part:'Morning',
-      venue:'Bride\u2019s Residence, Hospet',bg:'bg-haldi.jpg',label:'HALDI',color:'--c-haldi',map:'https://maps.google.com/?q=Hospet'},
-    {day:'Day 2',title:'Pellikoduku & Sangeeth',date:'2026-12-10',start:'11:00',end:'23:00',dress:'Pastel & Festive Ethnic',part:'Morning & Evening',
-      venue:'Sri Venkateswara Kalyana Mantapam, Hospet',bg:'bg-pellikoduku.jpg',label:'2 EVENTS',color:'--c-pelli',map:'https://maps.google.com/?q=Hospet+Kalyana+Mantapam'},
-    {day:'Day 3',title:'Marriage (Sumuhurtham)',date:'2026-12-11',start:'10:42',end:'13:00',dress:'Silk Sarees & Dhoti',part:'Morning',
-      venue:'Sri Venkateswara Kalyana Mantapam, Hospet',bg:'bg-marriage.jpg',label:'MARRIAGE',color:'--c-marriage',map:'https://maps.google.com/?q=Hospet+Kalyana+Mantapam'},
-    {day:'Day 5',title:'Sri Satyanarayana Swamy Vratham, Vindu & Reception',date:'2026-12-13',start:'09:00',end:'21:00',dress:'Traditional / Formal',part:'Morning & Evening',
-      venue:'Groom\u2019s Residence & Hall, Hospet',bg:'bg-vratham.jpg',label:'3 EVENTS',color:'--c-reception',map:'https://maps.google.com/?q=Hospet'}
-  ]
+    {day:'Day 1',title:'Baraat',date:'2026-12-04',start:'06:00',end:'13:00',part:'Evening',
+      venue:'Bride\u2019s Residence, Dharwad',bg:'images/DSC01491.JPG',label:'Baraat',color:'--c-Baraat',map:'https://maps.app.goo.gl/ZaetH4Ut3VHd1wor5'},
+    {day:'Day 2',title:'Marriage (Subumurtham)',date:'2026-12-05',start:'12:13',end:'13:00',part:'Morning',
+      venue:'KBN Sai Aranya Wedding Hall, Dharwad',bg:'images/DSC01491.JPG',label:'MARRIAGE',color:'--c-marriage',map:'https://maps.app.goo.gl/ZaetH4Ut3VHd1wor5'}]
 };
 
 const $=s=>document.querySelector(s);
@@ -28,8 +23,7 @@ function downloadICS(ev){
     `UID:${ev.date}-${ev.title.replace(/\W/g,'')}@wedding-invite`,
     `DTSTAMP:${new Date().toISOString().replace(/[-:]|\.\d{3}/g,'')}`,
     `DTSTART;TZID=Asia/Kolkata:${f(ev.date,ev.start)}`,`DTEND;TZID=Asia/Kolkata:${f(ev.date,ev.end)}`,
-    `SUMMARY:${ev.title} \u2013 Sai Kiran & Meghana`,`LOCATION:${ev.venue}`,
-    `DESCRIPTION:Dress code: ${ev.dress}`,'END:VEVENT','END:VCALENDAR'].join('\r\n');
+    `SUMMARY:${ev.title} \u2013 Sai Kiran & Meghana`,`LOCATION:${ev.venue}`,'END:VEVENT','END:VCALENDAR'].join('\r\n');
   const a=document.createElement('a');
   a.href=URL.createObjectURL(new Blob([ics],{type:'text/calendar'}));
   a.download=ev.title.replace(/\W+/g,'-').toLowerCase()+'.ics';
@@ -43,7 +37,6 @@ function renderEvents(){
       <p class="day">${e.day}</p><h3>${e.title}</h3>
       <div class="row"><small>DATE</small>${fmtDate(e.date)}</div>
       <div class="row"><small>TIME</small>${to12(e.start)} onwards</div>
-      <div class="row"><small>DRESS CODE</small>${e.dress}</div>
       <div class="row"><small>PART OF DAY</small>${e.part}</div>
       <div class="row"><small>VENUE</small>${e.venue}</div>
       <div class="btn-row">
