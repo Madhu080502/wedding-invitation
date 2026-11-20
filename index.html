@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wedding Invitation · Sai Kiran & Meghana</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="ambient" aria-hidden="true"></div>
+<canvas id="petals" aria-hidden="true"></canvas>
+
+<!-- Gate overlay -->
+<div id="gate" role="button" tabindex="0" aria-label="Tap to open invitation">
+  <div class="door door-left"></div>
+  <div class="door door-right"></div>
+  <div class="gate-line"></div>
+  <img class="gate-kalash" src="images/kalash.svg" alt="">
+  <div class="gate-text">
+    <p class="label">You're Invited</p>
+    <h1 class="names">Atmanand  <span>&amp;</span> Pooja</h1>
+    <p class="tap pulse">TAP TO OPEN</p>
+  </div>
+</div>
+
+<!-- Floating controls -->
+<div class="fab-wrap">
+  <button id="scrollBtn" class="fab" aria-label="Toggle auto scroll">
+    <svg viewBox="0 0 24 24" class="i-play"><path d="M8 5v14l11-7z"/></svg>
+    <svg viewBox="0 0 24 24" class="i-pause"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
+  </button>
+  <button id="audioBtn" class="fab" aria-label="Toggle music">
+    <span class="eq"><i></i><i></i><i></i><i></i></span>
+  </button>
+</div>
+<audio id="bgm" loop preload="auto"><source src="audio/wedding-music.mp3" type="audio/mpeg"></audio>
+
+<main id="app" class="app">
+
+  <!-- Hero -->
+  <div class="photo" style="--bg:url(images/bg-hero.jpg)"><section class="hero card-frame">
+    <p class="mantra reveal">SRIRASTU · SHUBHAMASTU · AVIGHNAMASTU</p>
+    <p class="blessing reveal">Sri Lakshmi Narasimha Swamy &nbsp;·&nbsp; Sri Venkateswara Swamy<br>Blessings of Almighty</p>
+    <img class="divider reveal" src="images/divider.svg" alt="">
+    <p class="small reveal">With the blessings of our beloved grandparents<br><b>Late Sri Basappa &amp; Late Smt. Yallamma</b><br><b>Late Sri Baalappa &amp; Late Smt. Maremma</b></p>
+    <p class="host reveal">Sri Pakirappa &amp; Smt. Savitri<br><em>request the pleasure of your company at the marriage of their son</em></p>
+    <h2 class="person reveal">Chi. Atmanand</h2>
+    <!-- <p class="small reveal">B.Tech, Software Engineer</p> -->
+    <p class="with reveal">WITH</p>
+    <h2 class="person reveal">Chi.Sou. Pooja</h2>
+    <p class="small reveal">D/o  Manjunath Ramchandra Davaskar </p>
+    <p class="small reveal">Subumurtham: <b>Saturday, 05 December 2026 · 12:13 PM</b></p>
+    <span class="pill reveal">KBN Sai Aranya Wedding Hall, Narendra Cross, Dharwad</span>
+
+    <div class="countdown reveal" id="countdown" aria-live="polite">
+      <div class="arch"><b id="cd-d">00</b><small>DAYS</small></div>
+      <div class="arch"><b id="cd-h">00</b><small>HOURS</small></div>
+      <div class="arch"><b id="cd-m">00</b><small>MINS</small></div>
+      <div class="arch"><b id="cd-s">00</b><small>SECS</small></div>
+    </div>
+    <p id="cd-done" class="done" hidden>The couple are now married. Thank you for your blessings!</p>
+  </section></div>
+
+  <!-- Celebrations -->
+  <h2 class="section-title reveal">The Celebrations</h2>
+  <div id="events"></div>
+
+  <!-- Calendar -->
+  <section class="cal-section photo" style="--bg:url(images/bg-calendar.jpg)">
+    <h2 class="section-title reveal">Save the Dates</h2>
+    <div class="cal-frame reveal">
+      <h3 id="calTitle"></h3>
+      <div class="cal-grid" id="calGrid"></div>
+      <div class="legend" id="legend"></div>
+    </div>
+  </section>
+
+  <!-- Venue -->
+  <section class="venue-wrap photo" style="--bg:url(images/bg-venue.jpg)">
+    <div class="venue-card reveal">
+      <img src="images/kalash.svg" alt="" class="k-small">
+      <p class="label">Grand Venue</p>
+      <h2 class="person" id="venueName"></h2>
+      <span class="pill" id="venueAddr"></span>
+      <div class="btn-row">
+        <a class="btn crimson" id="venueMap" target="_blank" rel="noopener">Open in Google Maps</a>
+        <button class="btn ghost" id="copyBtn">Copy Address</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer photo" style="--bg:url(images/bg-venue.jpg)"><div class="reveal">
+    <img class="divider" src="images/divider.svg" alt="">
+    <p class="quote">“Two souls, one sacred fire — may your blessings make our journey auspicious.”</p>
+    <p class="small">With love and best compliments from</p>
+    <p class="host"><b>Narayana Rao, Padmavathi &amp; Family</b><br>Ramesh Reddy, Lakshmi &amp; Family<br>All relatives &amp; friends</p>
+    <div class="btn-row">
+      <a class="btn crimson" id="rsvpBtn" target="_blank" rel="noopener">RSVP on WhatsApp</a>
+      <a class="btn ghost" id="wishBtn" target="_blank" rel="noopener">Send Wishes</a>
+    </div>
+  </div></footer>
+</main>
+
+<div id="toast" role="status"></div>
+
+<script src="js/countdown.js"></script>
+<script src="js/petals.js"></script>
+<script src="js/audio-scroll.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

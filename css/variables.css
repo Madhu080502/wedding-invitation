@@ -1,0 +1,10 @@
+:root{
+  --maroon-deep:#3B0910; --maroon:#4A0E17;
+  --gold:#E5B95C; --gold-antique:#D4AF37;
+  --gold-pill:#F5C76B; --crimson:#A61C2E; --ivory:#FFF8E7;
+  --font-head:'Cormorant Garamond','Playfair Display',serif;
+  --font-label:'Cinzel',serif;
+  --font-body:'Plus Jakarta Sans','Lato',sans-serif;
+  --app-w:480px; --radius-arch:200px 200px 20px 20px;
+  --c-haldi:#E8B923; --c-pelli:#C2185B; --c-marriage:#A61C2E; --c-reception:#2E7D6B;
+}
