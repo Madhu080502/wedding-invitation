@@ -16,6 +16,38 @@ const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('show');setT
 const fmtDate=d=>new Date(d+'T00:00:00').toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
 const to12=t=>{let[h,m]=t.split(':').map(Number);return`${h%12||12}:${String(m).padStart(2,'0')} ${h<12?'AM':'PM'}`};
 
+function setupBackgroundSlideshow(){
+  const images=[
+    'images/BackGround/DSC01740.JPG',
+    'images/BackGround/DSC01499.JPG',
+    'images/BackGround/DSC01491.JPG',
+    'images/BackGround/DSC01384.JPG'
+  ];
+  const slides=document.querySelectorAll('.background-slide');
+  if(slides.length<2)return;
+  let index=0,active=0;
+  const preload=src=>new Promise(resolve=>{
+    const img=new Image();
+    img.onload=()=>resolve(src);
+    img.onerror=()=>resolve(null);
+    img.src=src;
+    if(img.complete&&img.naturalWidth)resolve(src);
+  });
+  Promise.all(images.map(preload)).then(loaded=>{
+    const ready=loaded.filter(Boolean);
+    if(!ready.length)return;
+    slides[active].style.backgroundImage=`url("${ready[index]}")`;
+    setInterval(()=>{
+      index=(index+1)%ready.length;
+      const next=1-active;
+      slides[next].style.backgroundImage=`url("${ready[index]}")`;
+      slides[next].classList.add('is-active');
+      slides[active].classList.remove('is-active');
+      active=next;
+    },2000);
+  });
+}
+
 /* ICS download */
 function downloadICS(ev){
   const f=(d,t)=>d.replace(/-/g,'')+'T'+t.replace(':','')+'00';
@@ -81,18 +113,18 @@ function setupReveal(){
 }
 
 function setupGate(){
-  const gate=$('#gate');document.body.classList.add('locked');
+  const gate=$('#gate');
   const open=()=>{
     if(gate.classList.contains('open'))return;
-    gate.classList.add('open');document.body.classList.remove('locked');
+    gate.classList.add('open');
     Media.playAudio();Petals.start();
-    setTimeout(()=>gate.remove(),1800);
+    setTimeout(()=>{gate.remove();document.body.classList.remove('locked')},1800);
   };
   gate.addEventListener('click',open);
   gate.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')open()});
 }
 
 document.addEventListener('DOMContentLoaded',()=>{
-  renderEvents();renderCalendar();setupVenue();setupReveal();setupGate();
+  setupBackgroundSlideshow();renderEvents();renderCalendar();setupVenue();setupReveal();setupGate();
   startCountdown(new Date(CONFIG.marriageDateTime));
 });

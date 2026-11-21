@@ -12,8 +12,12 @@
 <link rel="stylesheet" href="css/animations.css">
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-<div class="ambient" aria-hidden="true"></div>
+<body class="locked">
+<div class="background-slideshow" aria-hidden="true">
+  <div class="background-slide is-active"></div>
+  <div class="background-slide"></div>
+</div>
+<div class="background-mask" aria-hidden="true"></div>
 <canvas id="petals" aria-hidden="true"></canvas>
 
 <!-- Gate overlay -->
@@ -44,7 +48,7 @@
 <main id="app" class="app">
 
   <!-- Hero -->
-  <div class="photo" style="--bg:url(images/DSC01499.JPG)"><section class="hero card-frame">
+  <div class="photo"><section class="hero card-frame">
     <p class="mantra reveal">SRIRASTU · SHUBHAMASTU · AVIGHNAMASTU</p>
     <p class="blessing reveal">Sri Renukadevi prasanna &nbsp;·&nbsp; Sri kalolli Hanumappa prasanna<br>Blessings of Almighty</p>
     <img class="divider reveal" src="images/divider.svg" alt="">
@@ -72,7 +76,7 @@
   <div id="events"></div>
 
   <!-- Calendar -->
-  <section class="cal-section photo" style="--bg:url(images/bg-calendar.jpg)">
+  <section class="cal-section photo">
     <h2 class="section-title reveal">Save the Dates</h2>
     <div class="cal-frame reveal">
       <h3 id="calTitle"></h3>
@@ -82,7 +86,7 @@
   </section>
 
   <!-- Venue -->
-  <section class="venue-wrap photo" style="--bg:url(images/DSC01384.JPG)">
+  <section class="venue-wrap photo">
     <div class="venue-card reveal">
       <img src="images/kalash.svg" alt="" class="k-small">
       <p class="label">Grand Venue</p>
@@ -95,7 +99,7 @@
     </div>
   </section>
 
-  <footer class="footer photo" style="--bg:url(images/DSC01491.JPG)"><div class="reveal">
+  <footer class="footer photo"><div class="reveal">
     <img class="divider" src="images/divider.svg" alt="">
     <p class="quote">“Two souls, one sacred fire may your blessings make our journey auspicious.”</p>
     <p class="small">With love and best compliments from</p>
