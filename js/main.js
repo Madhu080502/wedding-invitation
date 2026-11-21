@@ -5,7 +5,7 @@ const CONFIG={
     map:'https://maps.app.goo.gl/ZaetH4Ut3VHd1wor5'},
   whatsapp:'919632043415',
   events:[
-    {day:'Day 1',title:'Baraat',date:'2026-12-04',start:'06:00',end:'13:00',part:'Evening',
+    {day:'Day 1',title:'Baraat',date:'2026-12-04',start:'18:00',end:'24:00',part:'Evening',
       venue:'Bride\u2019s Residence, Dharwad',bg:'images/BackGround/DSC01491.JPG',label:'Baraat',color:'--c-Baraat',map:'https://maps.app.goo.gl/ZaetH4Ut3VHd1wor5'},
     {day:'Day 2',title:'Marriage (Subumurtham)',date:'2026-12-05',start:'12:13',end:'13:00',part:'Morning',
       venue:'KBN Sai Aranya Wedding Hall, Dharwad',bg:'images/BackGround/DSC01491.JPG',label:'MARRIAGE',color:'--c-marriage',map:'https://maps.app.goo.gl/ZaetH4Ut3VHd1wor5'}]
@@ -18,10 +18,15 @@ const to12=t=>{let[h,m]=t.split(':').map(Number);return`${h%12||12}:${String(m).
 
 function setupBackgroundSlideshow(){
   const images=[
-    'images/BackGround/DSC01740.JPG',
-    'images/BackGround/DSC01499.JPG',
-    'images/BackGround/DSC01491.JPG',
-    'images/BackGround/DSC01384.JPG'
+    'images/Background/Atmanand.jpeg',
+    'images/Background/Atmanand%20(1).jpeg',
+    'images/Background/Atmanand%20(2).jpeg',
+    'images/Background/Atmanand%20(3).jpeg',
+    'images/Background/Atmanand%20(4).jpeg',
+    'images/Background/Atmanand%20(5).jpeg',
+    'images/Background/Atmanand%20(6).jpeg',
+    'images/Background/Atmanand%20(7).jpeg',
+    'images/Background/Atmanand%20(8).jpeg'
   ];
   const slides=document.querySelectorAll('.background-slide');
   if(slides.length<2)return;
