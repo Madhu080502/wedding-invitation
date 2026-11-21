@@ -18,15 +18,15 @@ const to12=t=>{let[h,m]=t.split(':').map(Number);return`${h%12||12}:${String(m).
 
 function setupBackgroundSlideshow(){
   const images=[
-    'images/Background/Atmanand.jpeg',
-    'images/Background/Atmanand%20(1).jpeg',
-    'images/Background/Atmanand%20(2).jpeg',
-    'images/Background/Atmanand%20(3).jpeg',
-    'images/Background/Atmanand%20(4).jpeg',
-    'images/Background/Atmanand%20(5).jpeg',
-    'images/Background/Atmanand%20(6).jpeg',
-    'images/Background/Atmanand%20(7).jpeg',
-    'images/Background/Atmanand%20(8).jpeg'
+    'images/BackGround/Atmanand.jpeg',
+    'images/BackGround/Atmanand%20(1).jpeg',
+    'images/BackGround/Atmanand%20(2).jpeg',
+    'images/BackGround/Atmanand%20(3).jpeg',
+    'images/BackGround/Atmanand%20(4).jpeg',
+    'images/BackGround/Atmanand%20(5).jpeg',
+    'images/BackGround/Atmanand%20(6).jpeg',
+    'images/BackGround/Atmanand%20(7).jpeg',
+    'images/BackGround/Atmanand%20(8).jpeg'
   ];
   const slides=document.querySelectorAll('.background-slide');
   if(slides.length<2)return;
