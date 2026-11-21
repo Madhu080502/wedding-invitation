@@ -6,9 +6,9 @@ const CONFIG={
   whatsapp:'919632043415',
   events:[
     {day:'Day 1',title:'Baraat',date:'2026-12-04',start:'06:00',end:'13:00',part:'Evening',
-      venue:'Bride\u2019s Residence, Dharwad',bg:'images/DSC01491.JPG',label:'Baraat',color:'--c-Baraat',map:'https://maps.app.goo.gl/ZaetH4Ut3VHd1wor5'},
+      venue:'Bride\u2019s Residence, Dharwad',bg:'images/BackGround/DSC01491.JPG',label:'Baraat',color:'--c-Baraat',map:'https://maps.app.goo.gl/ZaetH4Ut3VHd1wor5'},
     {day:'Day 2',title:'Marriage (Subumurtham)',date:'2026-12-05',start:'12:13',end:'13:00',part:'Morning',
-      venue:'KBN Sai Aranya Wedding Hall, Dharwad',bg:'images/DSC01491.JPG',label:'MARRIAGE',color:'--c-marriage',map:'https://maps.app.goo.gl/ZaetH4Ut3VHd1wor5'}]
+      venue:'KBN Sai Aranya Wedding Hall, Dharwad',bg:'images/BackGround/DSC01491.JPG',label:'MARRIAGE',color:'--c-marriage',map:'https://maps.app.goo.gl/ZaetH4Ut3VHd1wor5'}]
 };
 
 const $=s=>document.querySelector(s);
@@ -25,7 +25,23 @@ function setupBackgroundSlideshow(){
   ];
   const slides=document.querySelectorAll('.background-slide');
   if(slides.length<2)return;
-  let index=0,active=0;
+  let index=0,active=0,rotationStarted=false,initialShown=false;
+  const ready=[];
+  const show=(slide,src)=>{slide.style.backgroundImage=`url("${new URL(src,document.baseURI).href}")`};
+  const startRotation=()=>{
+    if(rotationStarted||ready.filter(Boolean).length<2)return;
+    rotationStarted=true;
+    setInterval(()=>{
+      let attempts=0;
+      do{index=(index+1)%images.length;attempts++}while(!ready[index]&&attempts<images.length);
+      if(!ready[index])return;
+      const next=1-active;
+      show(slides[next],ready[index]);
+      slides[next].classList.add('is-active');
+      slides[active].classList.remove('is-active');
+      active=next;
+    },6000);
+  };
   const preload=src=>new Promise(resolve=>{
     const img=new Image();
     img.onload=()=>resolve(src);
@@ -33,19 +49,16 @@ function setupBackgroundSlideshow(){
     img.src=src;
     if(img.complete&&img.naturalWidth)resolve(src);
   });
-  Promise.all(images.map(preload)).then(loaded=>{
-    const ready=loaded.filter(Boolean);
-    if(!ready.length)return;
-    slides[active].style.backgroundImage=`url("${ready[index]}")`;
-    setInterval(()=>{
-      index=(index+1)%ready.length;
-      const next=1-active;
-      slides[next].style.backgroundImage=`url("${ready[index]}")`;
-      slides[next].classList.add('is-active');
-      slides[active].classList.remove('is-active');
-      active=next;
-    },2000);
-  });
+  images.forEach((src,i)=>preload(src).then(loaded=>{
+    if(!loaded)return;
+    ready[i]=src;
+    if(!initialShown){
+      show(slides[active],src);
+      slides[active].classList.add('is-active');
+      initialShown=true;
+    }
+    startRotation();
+  }));
 }
 
 /* ICS download */
@@ -64,7 +77,7 @@ function downloadICS(ev){
 
 function renderEvents(){
   $('#events').innerHTML=CONFIG.events.map((e,i)=>`
-  <section class="event" style="background-image:url(images/${e.bg})">
+  <section class="event" style="background-image:url('${e.bg}')">
     <div class="event-in reveal">
       <p class="day">${e.day}</p><h3>${e.title}</h3>
       <div class="row"><small>DATE</small>${fmtDate(e.date)}</div>
