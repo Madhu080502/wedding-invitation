@@ -46,7 +46,7 @@ body.locked .app,body.locked .fab-wrap,body.locked #petals{visibility:hidden}
 .host{font-family:var(--font-head);font-size:1.25rem;line-height:1.4;margin:.8rem 0}
 .host em{font-size:1rem;opacity:.85}
 .person{font-family:var(--font-head);font-size:2.3rem;color:var(--gold-pill);line-height:1.15}
-.with{font-family:var(--font-label);letter-spacing:.3em;color:var(--gold);margin:.8rem 0}
+.with{letter-spacing:.3em;color:var(--gold);margin:.8rem 0}
 .pill{display:inline-block;background:var(--gold-pill);color:var(--maroon-deep);padding:.5rem 1.1rem;border-radius:999px;font-weight:600;font-size:.82rem;margin:.6rem 0}
 .countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:1.6rem}
 .arch{border:2px solid var(--gold);outline:1px solid var(--gold);outline-offset:-6px;border-radius:50% 50% 14px 14px;padding:1.1rem .2rem .6rem;background:rgba(0,0,0,.4)}
@@ -63,6 +63,7 @@ body.locked .app,body.locked .fab-wrap,body.locked #petals{visibility:hidden}
 .event h3{font-family:var(--font-head);font-size:2.2rem;color:var(--gold-pill);margin:.4rem 0 1rem;line-height:1.15}
 .row{padding:.5rem 0;border-top:1px solid rgba(229,185,92,.3);font-size:.9rem}
 .row small{display:block;font-family:var(--font-label);font-size:.62rem;letter-spacing:.15em;color:var(--gold)}
+.event-description{font-family:var(--font-head);font-style:italic;font-size:1.08rem;margin:.8rem 0;color:var(--ivory)}
 .btn-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:1.2rem}
 .btn{padding:.7rem 1.3rem;border-radius:999px;font-weight:600;font-size:.82rem;border:2px solid var(--gold)}
 .btn.crimson{background:rgba(0,0,0,.42)}

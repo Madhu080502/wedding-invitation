@@ -1,14 +1,22 @@
 /* ===== EDIT YOUR DETAILS HERE ===== */
 const CONFIG={
-  marriageDateTime:'2026-12-05T12:13:00+05:30',
+  marriageDateTime:'2026-12-05T07:00:00+05:30',
   venue:{name:'KBN Sai Aranya Wedding Hall',address:'Narendra Cross, Dharwad Karnataka 583201',
     map:'https://maps.app.goo.gl/ZaetH4Ut3VHd1wor5'},
   whatsapp:'919632043415',
   events:[
-    {day:'Day 1',title:'Baraat',date:'2026-12-04',start:'18:00',end:'24:00',part:'Evening',
-      venue:'Bride\u2019s Residence, Dharwad',bg:'images/BackGround/DSC01491.JPG',label:'Baraat',color:'--c-Baraat',map:'https://maps.app.goo.gl/ZaetH4Ut3VHd1wor5'},
-    {day:'Day 2',title:'Marriage (Subumurtham)',date:'2026-12-05',start:'12:13',end:'13:00',part:'Morning',
-      venue:'KBN Sai Aranya Wedding Hall, Dharwad',bg:'images/BackGround/DSC01491.JPG',label:'MARRIAGE',color:'--c-marriage',map:'https://maps.app.goo.gl/ZaetH4Ut3VHd1wor5'}]
+    {day:'4 December · Friday',title:'Baraat',date:'2026-12-04',start:'18:00',end:'19:00',timeLabel:'6:00 PM',
+      description:'Join the groom’s procession with music, dance and celebration.',venue:'Baraat assembly point to be shared separately',label:'BARAAT',color:'--c-Baraat',map:'https://maps.app.goo.gl/ZaetH4Ut3VHd1wor5'},
+    {day:'4 December · Friday',title:'Welcome Ceremony',date:'2026-12-04',start:'19:00',end:'19:45',timeLabel:'7:00 PM',
+      venue:'KBN Sai Aranya Wedding Hall, Dharwad',label:'WELCOME',color:'--c-pelli',map:'https://maps.app.goo.gl/ZaetH4Ut3VHd1wor5'},
+    {day:'4 December · Friday',title:'Sangeet',date:'2026-12-04',start:'19:45',end:'21:00',timeLabel:'7:45 PM',
+      description:'An evening of music, dance and cherished memories.',venue:'KBN Sai Aranya Wedding Hall, Dharwad',label:'SANGEET',color:'--c-reception',map:'https://maps.app.goo.gl/ZaetH4Ut3VHd1wor5'},
+    {day:'4 December · Friday',title:'Engagement',date:'2026-12-04',start:'21:00',end:'23:00',timeLabel:'9:00 PM',
+      description:'An exchange of rings and the promise of a lifetime together.',venue:'KBN Sai Aranya Wedding Hall, Dharwad',label:'ENGAGEMENT',color:'--c-pelli',map:'https://maps.app.goo.gl/ZaetH4Ut3VHd1wor5'},
+    {day:'5 December · Saturday',title:'Subumurtham',date:'2026-12-05',start:'07:00',end:'11:30',timeLabel:'7:00 AM',
+      description:'Join us as we begin our married life with your blessings.',venue:'KBN Sai Aranya Wedding Hall, Dharwad',label:'WEDDING',color:'--c-marriage',map:'https://maps.app.goo.gl/ZaetH4Ut3VHd1wor5'},
+    {day:'5 December · Saturday',title:'Reception & Lunch',date:'2026-12-05',start:'11:30',end:'13:30',timeLabel:'11:30 onwards',
+      description:'Celebrate with the newlyweds over warm wishes and a festive meal.',venue:'KBN Sai Aranya Wedding Hall, Dharwad',label:'RECEPTION',color:'--c-reception',map:'https://maps.app.goo.gl/ZaetH4Ut3VHd1wor5'}]
 };
 
 const $=s=>document.querySelector(s);
@@ -82,12 +90,12 @@ function downloadICS(ev){
 
 function renderEvents(){
   $('#events').innerHTML=CONFIG.events.map((e,i)=>`
-  <section class="event" style="background-image:url('${e.bg}')">
+  <section class="event">
     <div class="event-in reveal">
       <p class="day">${e.day}</p><h3>${e.title}</h3>
       <div class="row"><small>DATE</small>${fmtDate(e.date)}</div>
-      <div class="row"><small>TIME</small>${to12(e.start)} onwards</div>
-      <div class="row"><small>PART OF DAY</small>${e.part}</div>
+      <div class="row"><small>TIME</small>${e.timeLabel||`${to12(e.start)} onwards`}</div>
+      ${e.description?`<p class="event-description">${e.description}</p>`:''}
       <div class="row"><small>VENUE</small>${e.venue}</div>
       <div class="btn-row">
         <button class="btn gold" data-ics="${i}">Add to Calendar</button>
