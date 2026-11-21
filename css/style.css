@@ -63,6 +63,7 @@ body.locked .app,body.locked .fab-wrap,body.locked #petals{visibility:hidden}
 .event h3{font-family:var(--font-head);font-size:2.2rem;color:var(--gold-pill);margin:.4rem 0 1rem;line-height:1.15}
 .row{padding:.5rem 0;border-top:1px solid rgba(229,185,92,.3);font-size:.9rem}
 .row small{display:block;font-family:var(--font-label);font-size:.62rem;letter-spacing:.15em;color:var(--gold)}
+.row sup{font-size:.62em;vertical-align:super;line-height:0}
 .event-description{font-family:var(--font-head);font-style:italic;font-size:1.08rem;margin:.8rem 0;color:var(--ivory)}
 .btn-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:1.2rem}
 .btn{padding:.7rem 1.3rem;border-radius:999px;font-weight:600;font-size:.82rem;border:2px solid var(--gold)}

@@ -1,7 +1,7 @@
 /* ===== EDIT YOUR DETAILS HERE ===== */
 const CONFIG={
   marriageDateTime:'2026-12-05T07:00:00+05:30',
-  venue:{name:'KBN Sai Aranya Wedding Hall',address:'Narendra Cross, Dharwad Karnataka 583201',
+  venue:{name:'KBN Sai Aranya Wedding Hall',address:'Narendra Cross, Dharwad-580005',
     map:'https://maps.app.goo.gl/ZaetH4Ut3VHd1wor5'},
   whatsapp:'919632043415',
   events:[
@@ -21,7 +21,14 @@ const CONFIG={
 
 const $=s=>document.querySelector(s);
 const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2400)};
-const fmtDate=d=>new Date(d+'T00:00:00').toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+const fmtDate=d=>{
+  const date=new Date(d+'T00:00:00');
+  const day=String(date.getDate()).padStart(2,'0');
+  const ordinalDay=date.getDate();
+  const suffix=ordinalDay%100>=11&&ordinalDay%100<=13?'th':({1:'st',2:'nd',3:'rd'}[ordinalDay%10]||'th');
+  const month=date.toLocaleDateString('en-IN',{month:'short'});
+  return`${day}<sup>${suffix}</sup> ${month} ${date.getFullYear()}`;
+};
 const to12=t=>{let[h,m]=t.split(':').map(Number);return`${h%12||12}:${String(m).padStart(2,'0')} ${h<12?'AM':'PM'}`};
 
 function setupBackgroundSlideshow(){
